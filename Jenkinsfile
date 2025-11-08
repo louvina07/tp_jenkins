@@ -1,39 +1,30 @@
-
 pipeline {
     agent any
 
     stages {
         stage('Compile') {
             steps {
-                echo '🧱 Compilation des fichiers Java...'
-                sh 'javac HelloWorld.java Merci.java DeRien.java'
+                echo '🧑‍💻 Compilation des fichiers Java...'
+                bat 'javac HelloWorld.java'
             }
         }
 
         stage('Run HelloWorld') {
             steps {
-                echo '🚀 Exécution de HelloWorld.java'
-                sh 'java HelloWorld'
+                bat 'java HelloWorld'
             }
         }
 
         stage('Run Merci') {
             steps {
-                echo '🙏 Exécution de Merci.java'
-                sh 'java Merci'
+                bat 'java Merci'
             }
         }
 
         stage('Run DeRien') {
             steps {
-                echo '🤝 Exécution de DeRien.java'
-                sh 'java DeRien'
+                bat 'java DeRien'
             }
         }
-    }
-
-    triggers {
-        // Exécute automatiquement le pipeline à chaque changement dans le repo
-        pollSCM('* * * * *') // toutes les minutes
     }
 }
